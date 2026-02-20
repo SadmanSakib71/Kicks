@@ -1,9 +1,13 @@
 import "./App.css";
+import Navbar from "./component/Navbar";
 
 function App() {
   return (
-    <div className="">
-      <h1 class="text-3xl font-bold underline">Hello world!</h1>
+    <div className="min-h-screen bg-[#E7E7E3]">
+      <div className="w-7xl items-center mx-auto">
+        <Navbar />
+        {/* <HeroSection /> */}
+      </div>
     </div>
   );
 }

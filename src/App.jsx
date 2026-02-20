@@ -1,7 +1,8 @@
 import "./App.css";
+import Categories from "./component/Categories";
 import HeroSection from "./component/HeroSection";
 import Navbar from "./component/Navbar";
-import Categories from "./component/Categories";
+import NewProducts from "./component/NewProducts";
 
 function App() {
   return (
@@ -9,6 +10,7 @@ function App() {
       <div className="w-7xl items-center mx-auto">
         <Navbar />
         <HeroSection />
+        <NewProducts />
         <Categories />
       </div>
     </div>

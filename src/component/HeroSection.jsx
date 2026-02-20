@@ -4,7 +4,7 @@ import sideImage1 from "../assets/heroImage (3).svg";
 
 const HeroSection = () => {
   return (
-    <section className=" pb-12">
+    <section className="mb-12">
       {/* Headline */}
       <div className="text-center">
         <h1 className="text-[220px] font-bold tracking-tight">

@@ -1,5 +1,6 @@
 import "./App.css";
 import Categories from "./component/Categories";
+import Footer from "./component/Footer";
 import HeroSection from "./component/HeroSection";
 import Navbar from "./component/Navbar";
 import NewProducts from "./component/NewProducts";
@@ -14,6 +15,7 @@ function App() {
         <NewProducts />
         <Categories />
         <Reviews />
+        <Footer />
       </div>
     </div>
   );

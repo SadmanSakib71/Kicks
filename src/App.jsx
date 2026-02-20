@@ -1,6 +1,7 @@
 import "./App.css";
 import HeroSection from "./component/HeroSection";
 import Navbar from "./component/Navbar";
+import Categories from "./component/Categories";
 
 function App() {
   return (
@@ -8,6 +9,7 @@ function App() {
       <div className="w-7xl items-center mx-auto">
         <Navbar />
         <HeroSection />
+        <Categories />
       </div>
     </div>
   );

@@ -15,9 +15,9 @@ const HeroSection = () => {
 
       {/* Main product container */}
       <div className="relative  overflow-hidden">
-        <div className="relative min-h-[520px] lg:min-h-[750px]">
+        <div className="relative min-h-130 lg:min-h-187.5">
           {/* Main image area - mustard/golden fabric with shoe */}
-          <div className="relative  min-h-[520px] lg:min-h-[750px] ">
+          <div className="relative  min-h-130 lg:min-h-187.5 ">
             <img
               src={mainImage}
               alt="Nike Air Max"
@@ -25,7 +25,7 @@ const HeroSection = () => {
             />
 
             {/* Vertical "Nike product of the year" label - left edge */}
-            <div className="absolute left-5 rounded-br-2xl rounded-bl-2xl top-1/2 -translate-y-1/2 w-[200px] h-10 -rotate-90 origin-left flex items-center justify-center bg-black z-10">
+            <div className="absolute left-5 rounded-br-2xl rounded-bl-2xl top-1/2 -translate-y-1/2 w-50 h-10 -rotate-90 origin-left flex items-center justify-center bg-black z-10">
               <span className="text-white text-xs font-medium uppercase tracking-wider whitespace-nowrap">
                 Nike product of the year
               </span>

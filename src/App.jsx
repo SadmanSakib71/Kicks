@@ -3,6 +3,7 @@ import Categories from "./component/Categories";
 import HeroSection from "./component/HeroSection";
 import Navbar from "./component/Navbar";
 import NewProducts from "./component/NewProducts";
+import Reviews from "./component/Reviews";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
         <HeroSection />
         <NewProducts />
         <Categories />
+        <Reviews />
       </div>
     </div>
   );

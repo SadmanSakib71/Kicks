@@ -1,4 +1,5 @@
 import { useState } from "react";
+import AlsoLike from "./AlsoLike";
 
 const PRODUCT = {
   name: "ADIDAS 4DFWD X PARLEY RUNNING SHOES",
@@ -22,8 +23,8 @@ const ProductDetails = () => {
   const [selectedSize, setSelectedSize] = useState(38);
 
   return (
-    <div className="min-h-screen bg-[#f5f3ef]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-12">
+    <div className="">
+      <div className="py-8 lg:py-12">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14 items-start">
           {/* Left: 2x2 image grid */}
           <div className="grid grid-cols-2 gap-3 sm:gap-4">
@@ -43,7 +44,7 @@ const ProductDetails = () => {
 
           {/* Right: product info */}
           <div className="lg:sticky lg:top-8">
-            <span className="inline-block px-3 py-1 rounded-full bg-[#a8d4e8] text-white text-xs font-semibold uppercase tracking-wide mb-3">
+            <span className="inline-block px-3 py-1 rounded-full bg-[#4C7AF2] text-white text-xs font-semibold uppercase tracking-wide mb-3">
               {PRODUCT.badge}
             </span>
             <h1 className="text-[#2E2E2E] font-bold uppercase tracking-tight text-xl sm:text-2xl mb-2">
@@ -121,7 +122,7 @@ const ProductDetails = () => {
               </button>
               <button
                 type="button"
-                className="w-12 h-[46px] flex items-center justify-center bg-[#2E2E2E] text-white rounded-lg hover:bg-[#1a1a1a] transition-colors focus:outline-none focus:ring-2 focus:ring-[#2E2E2E] focus:ring-offset-2"
+                className="w-12 h-11.5 flex items-center justify-center bg-[#2E2E2E] text-white rounded-lg hover:bg-[#1a1a1a] transition-colors focus:outline-none focus:ring-2 focus:ring-[#2E2E2E] focus:ring-offset-2"
                 aria-label="Add to wishlist"
               >
                 <svg
@@ -173,6 +174,7 @@ const ProductDetails = () => {
           </div>
         </div>
       </div>
+      <AlsoLike />
     </div>
   );
 };

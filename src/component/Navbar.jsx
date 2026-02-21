@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import logo from "../assets/Logo.svg";
 
 const Navbar = () => {
@@ -83,30 +84,28 @@ const Navbar = () => {
               />
             </svg>
           </button>
-          <div className="relative">
-            <button
-              type="button"
-              className="rounded-full p-1.5 text-neutral-800 transition hover:bg-neutral-100"
-              aria-label="Cart"
+          <Link
+            to="/cart"
+            className="relative rounded-full p-1.5 text-neutral-800 transition hover:bg-neutral-100"
+            aria-label="Cart"
+          >
+            <svg
+              className="h-5 w-5"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
             >
-              <svg
-                className="h-5 w-5"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"
-                />
-              </svg>
-            </button>
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"
+              />
+            </svg>
             <span className="absolute -right-0.5 -top-0.5 flex h-5 w-5 items-center justify-center rounded-full bg-orange-500 text-xs font-medium text-white">
               {cartCount}
             </span>
-          </div>
+          </Link>
 
           {/* Mobile menu toggle - only when we need to collapse left links */}
           <button

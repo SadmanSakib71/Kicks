@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const NEW_PRODUCTS = [
   {
     id: 1,
@@ -84,13 +86,16 @@ const NewProducts = () => {
               </h3>
 
               {/* Button: full width, same bottom radius as card, price in orange */}
-              <button
-                type="button"
-                className="mt-auto w-full bg-[#222222] text-white font-bold uppercase tracking-wide text-sm py-4 px-4 rounded-xl hover:bg-black transition-colors"
-              >
-                <span>VIEW PRODUCT - </span>
-                <span className="text-[#FFC107]">${product.price}</span>
-              </button>
+              <Link to="/Product-details">
+                {" "}
+                <button
+                  type="button"
+                  className="cursor-pointer mt-auto w-full bg-[#222222] text-white font-bold uppercase tracking-wide text-sm py-4 px-4 rounded-xl hover:bg-black transition-colors"
+                >
+                  <span>VIEW PRODUCT - </span>
+                  <span className="text-[#FFC107]">${product.price}</span>
+                </button>
+              </Link>
             </article>
           ))}
         </div>

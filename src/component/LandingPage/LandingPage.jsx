@@ -1,7 +1,7 @@
-import Categories from "../Categories";
-import HeroSection from "../HeroSection";
-import NewProducts from "../NewProducts";
-import Reviews from "../Reviews";
+import Categories from "./Categories";
+import HeroSection from "./HeroSection";
+import NewProducts from "./NewProducts";
+import Reviews from "./Reviews";
 
 const LandingPage = () => {
   return (

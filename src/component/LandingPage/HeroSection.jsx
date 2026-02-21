@@ -1,6 +1,6 @@
-import mainImage from "../assets/heroImage (1).svg";
-import sideImage2 from "../assets/heroImage (2).svg";
-import sideImage1 from "../assets/heroImage (3).svg";
+import mainImage from "../../assets/heroImage (1).svg";
+import sideImage2 from "../../assets/heroImage (2).svg";
+import sideImage1 from "../../assets/heroImage (3).svg";
 
 const HeroSection = () => {
   return (

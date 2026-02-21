@@ -1,4 +1,5 @@
 import { useMemo, useState } from "react";
+import { Link } from "react-router-dom";
 import productIcon from "../assets/product-details-icon.svg";
 
 const CATEGORIES = [
@@ -135,14 +136,15 @@ const Categories = () => {
                     <h3 className="text-black font-bold text-sm sm:text-base lg:text-lg uppercase tracking-tight leading-tight max-w-[60%]">
                       {category.title}
                     </h3>
-                    <button
-                      onClick={""}
-                      type="button"
-                      aria-label={`View ${category.title}`}
-                      className="w-10 h-10 sm:w-11 sm:h-11 rounded-lg bg-black text-white flex items-center justify-center hover:bg-gray-800 transition-colors shrink-0 cursor-pointer"
-                    >
-                      <img src={productIcon} alt="" />
-                    </button>
+                    <Link to="/Product-details">
+                      <button
+                        type="button"
+                        aria-label={`View ${category.title}`}
+                        className="w-10 h-10 sm:w-11 sm:h-11 rounded-lg bg-black text-white flex items-center justify-center hover:bg-gray-800 transition-colors shrink-0 cursor-pointer"
+                      >
+                        <img src={productIcon} alt="" />
+                      </button>
+                    </Link>
                   </div>
                 </div>
               ))}

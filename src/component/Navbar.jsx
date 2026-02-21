@@ -22,7 +22,7 @@ const Navbar = () => {
   );
 
   return (
-    <header className="sticky top-0 z-50 w-full py-4">
+    <header className="sticky top-0 z-50 w-full pt-4">
       {/* Capsule container - light pill on darker background; width/gap come from App padding */}
       <nav className="mx-auto w-full grid grid-cols-3 items-center gap-4 rounded-2xl bg-white px-6 py-5 shadow-sm sm:px-8">
         {/* Left: Nav links (hidden on small screens, in hamburger menu) */}
@@ -43,7 +43,7 @@ const Navbar = () => {
 
         {/* Center: Logo */}
         <a
-          href="#"
+          href="/"
           className="justify-self-center text-lg font-bold uppercase tracking-tight text-neutral-800 transition hover:text-neutral-600 sm:text-xl"
         >
           <img src={logo} alt="logo" />

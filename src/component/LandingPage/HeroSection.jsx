@@ -6,8 +6,8 @@ const HeroSection = () => {
   return (
     <section className="mb-8 sm:mb-12 px-1 sm:px-0">
       {/* Headline - compact on mobile only; original size/center on lg+ */}
-      <div className="text-left px-2 sm:px-0 lg:text-center">
-        <h1 className="font-bold tracking-tight text-4xl sm:text-6xl md:text-8xl leading-tight lg:text-[220px] lg:leading-none">
+      <div className="text-center">
+        <h1 className="font-bold tracking-tight text-[70px] sm:text-6xl md:text-8xl leading-tight lg:text-[220px] lg:leading-none">
           <span className="text-[#1a1a1a]">DO IT</span>
           <span className="text-[#2563eb]">RIGHT</span>
         </h1>

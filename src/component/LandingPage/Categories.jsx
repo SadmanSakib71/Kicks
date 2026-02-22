@@ -55,7 +55,7 @@ const Categories = () => {
   };
 
   return (
-    <section className="bg-[#292929] pl-7 mt-30">
+    <section className="bg-[#292929] pl-7 mt-10 sm:mt-30">
       {/* Header bar */}
       <div className="flex items-center justify-between  px-6 py-4 sm:px-8">
         <h2 className="text-white font-bold text-xl sm:text-2xl lg:text-3xl uppercase tracking-tight">

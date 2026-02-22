@@ -18,7 +18,7 @@ const Footer = () => {
   };
 
   return (
-    <footer className="mt-16 mb-5 rounded-t-3xl overflow-hidden">
+    <footer className="sm:mt-16 mt-4 mb-5 rounded-t-3xl overflow-hidden">
       {/* Card 1: Blue section - rounded upper part (top-left, top-right) */}
       <div className="bg-[#4B66FF] rounded-b-3xl">
         <div className="rounded-t-3xl overflow-hidden px-6 py-12 md:px-12 lg:px-16 flex flex-col lg:flex-row items-center justify-between gap-8">

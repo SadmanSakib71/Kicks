@@ -39,21 +39,21 @@ const NewProducts = () => {
   return (
     <section className="mt-4 mb-6">
       <div className="max-w-7xl mx-auto">
-        {/* Header: title + CTA */}
-        <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-8">
-          <div>
+        {/* Header: title + CTA — horizontal on all screens (mobile = 2nd screenshot) */}
+        <div className="flex flex-row items-center justify-between gap-3 sm:gap-4 mb-4 sm:mb-8 px-4 py-4 sm:px-0 sm:py-0 rounded-lg sm:rounded-none">
+          <div className="min-w-0">
             <h2 className="text-[#2E2E2E] font-bold uppercase tracking-tight">
-              <span className="text-3xl sm:text-4xl lg:text-5xl block mt-1">
+              <span className="text-xl sm:text-4xl lg:text-5xl block mt-0 sm:mt-1 leading-tight">
                 DON&apos;T MISS OUT
               </span>
-              <span className="text-3xl sm:text-4xl lg:text-5xl block mt-1">
+              <span className="text-xl sm:text-4xl lg:text-5xl block mt-0 sm:mt-1 leading-tight">
                 NEW DROPS
               </span>
             </h2>
           </div>
           <button
             type="button"
-            className="bg-[#4C7AF2] text-white font-semibold uppercase tracking-wide text-sm px-6 py-3 rounded-lg hover:bg-[#3d6ae0] transition-colors shrink-0 w-full sm:w-auto text-center"
+            className="bg-[#4C7AF2] text-white font-semibold uppercase tracking-wide text-xs sm:text-sm px-4 py-2.5 sm:px-6 sm:py-3 rounded-full sm:rounded-lg hover:bg-[#3d6ae0] transition-colors shrink-0 whitespace-nowrap"
           >
             SHOP NEW DROPS
           </button>

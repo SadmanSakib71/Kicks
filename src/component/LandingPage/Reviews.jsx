@@ -49,13 +49,13 @@ const Reviews = () => {
     <section className="py-10 sm:py-12">
       <div className="max-w-7xl mx-auto">
         {/* Header: REVIEWS title + SEE ALL button */}
-        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-8">
+        <div className="flex flex-row justify-between gap-4 mb-8">
           <h2 className="text-[#2E2E2E] font-bold uppercase tracking-tight text-3xl sm:text-4xl">
             Reviews
           </h2>
           <button
             type="button"
-            className="bg-[#4C7AF2] text-white font-semibold uppercase tracking-wide text-sm px-6 py-3 rounded-lg hover:bg-[#3d6ae0] transition-colors shrink-0 w-full sm:w-auto text-center"
+            className="bg-[#4C7AF2] text-white font-semibold uppercase tracking-wide text-sm px-6 py-3 rounded-lg hover:bg-[#3d6ae0] transition-colors shrink-0 text-center"
           >
             SEE ALL
           </button>

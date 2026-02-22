@@ -1,11 +1,11 @@
-import "./App.css";
 import { RouterProvider } from "react-router-dom";
+import "./App.css";
 import { router } from "./component/LayoutAndRoute/Routing";
 
 function App() {
   return (
-    <div className="min-h-screen bg-[#E7E7E3]">
-      <div className="w-7xl items-center mx-auto">
+    <div className="min-h-screen min-w-0 bg-[#E7E7E3] overflow-x-hidden">
+      <div className="w-full max-w-7xl px-4 sm:px-6 lg:px-8 items-center mx-auto box-border">
         <RouterProvider router={router} />
       </div>
     </div>

@@ -24,37 +24,82 @@ const Navbar = () => {
 
   return (
     <header className="sticky top-0 z-50 w-full pt-4">
-      {/* Capsule container - light pill on darker background; width/gap come from App padding */}
-      <nav className="mx-auto w-full grid grid-cols-3 items-center gap-4 rounded-2xl bg-white px-6 py-5 shadow-sm sm:px-8">
-        {/* Left: Nav links (hidden on small screens, in hamburger menu) */}
-        <ul className="hidden items-center gap-6 sm:gap-8 lg:flex">
-          {leftLinks.map((link) => (
-            <li key={link.label}>
-              <a
-                href={link.href}
-                className="flex items-center text-sm font-medium text-neutral-800 transition hover:text-neutral-600"
-              >
-                {link.label}
-                {link.emoji && <span className="ml-0.5">{link.emoji}</span>}
-                {link.dropdown && <ChevronDown />}
-              </a>
-            </li>
-          ))}
-        </ul>
-
-        {/* Center: Logo */}
-        <a
-          href="/"
-          className="justify-self-center text-lg font-bold uppercase tracking-tight text-neutral-800 transition hover:text-neutral-600 sm:text-xl"
-        >
-          <img src={logo} alt="logo" />
-        </a>
-
-        {/* Right: Search, Profile, Cart with badge */}
-        <div className="flex items-center justify-end gap-4 sm:gap-5">
+      {/* Capsule container - light pill, rounded, subtle shadow */}
+      <nav className="relative mx-auto flex w-full items-center justify-between gap-4 rounded-2xl bg-neutral-50 px-4 py-3.5 shadow-sm sm:px-6 sm:py-4 lg:grid lg:grid-cols-3 lg:px-8 lg:py-5">
+        {/* Left: Hamburger on mobile, nav links on desktop */}
+        <div className="flex min-w-0 flex-1 items-center lg:flex-initial">
+          {/* Hamburger - visible on mobile/tablet only */}
           <button
             type="button"
-            className="rounded-full p-1.5 text-neutral-800 transition hover:bg-neutral-100"
+            className="rounded-lg p-2 text-neutral-800 transition hover:bg-neutral-100 lg:hidden"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-expanded={mobileMenuOpen}
+            aria-label="Toggle menu"
+          >
+            {mobileMenuOpen ? (
+              <svg
+                className="h-5 w-5"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              </svg>
+            ) : (
+              <svg
+                className="h-5 w-5"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
+              </svg>
+            )}
+          </button>
+          {/* Nav links - desktop only */}
+          <ul className="hidden items-center gap-6 sm:gap-8 lg:flex">
+            {leftLinks.map((link) => (
+              <li key={link.label}>
+                <a
+                  href={link.href}
+                  className="flex items-center text-sm font-medium text-neutral-800 transition hover:text-neutral-600"
+                >
+                  {link.label}
+                  {link.emoji && <span className="ml-0.5">{link.emoji}</span>}
+                  {link.dropdown && <ChevronDown />}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        {/* Center: Logo / KICKS - always centered */}
+        <a
+          href="/"
+          className="absolute left-1/2 top-1/2 flex -translate-x-1/2 -translate-y-1/2 items-center lg:static lg:translate-x-0 lg:translate-y-0 lg:justify-self-center"
+        >
+          <img
+            src={logo}
+            alt="KICKS"
+            className="h-5 w-auto sm:h-6"
+          />
+        </a>
+
+        {/* Right: User + Cart badge on mobile; Search, Profile, Cart on desktop */}
+        <div className="flex min-w-0 flex-1 items-center justify-end gap-3 sm:gap-4 lg:gap-5">
+          <button
+            type="button"
+            className="hidden rounded-full p-1.5 text-neutral-800 transition hover:bg-neutral-100 lg:block"
             aria-label="Search"
           >
             <svg
@@ -102,49 +147,10 @@ const Navbar = () => {
                 d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"
               />
             </svg>
-            <span className="absolute -right-0.5 -top-0.5 flex h-5 w-5 items-center justify-center rounded-full bg-orange-500 text-xs font-medium text-white">
+            <span className="absolute -right-0.5 -top-0.5 flex h-5 w-5 min-w-5 items-center justify-center rounded-full bg-orange-500 text-xs font-semibold text-black">
               {cartCount}
             </span>
           </Link>
-
-          {/* Mobile menu toggle - only when we need to collapse left links */}
-          <button
-            type="button"
-            className="rounded-lg p-2 text-neutral-600 lg:hidden"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            aria-expanded={mobileMenuOpen}
-            aria-label="Toggle menu"
-          >
-            {mobileMenuOpen ? (
-              <svg
-                className="h-5 w-5"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M6 18L18 6M6 6l12 12"
-                />
-              </svg>
-            ) : (
-              <svg
-                className="h-5 w-5"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M4 6h16M4 12h16M4 18h16"
-                />
-              </svg>
-            )}
-          </button>
         </div>
       </nav>
 

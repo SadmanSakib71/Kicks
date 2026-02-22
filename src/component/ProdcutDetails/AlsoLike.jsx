@@ -108,7 +108,7 @@ const AlsoLike = () => {
           </div>
         </div>
 
-        {/* Horizontal scroll: 4 cards visible, same card design as NewProducts */}
+        {/* Horizontal scroll: 2 cards on mobile, 4 on desktop; scroll by viewport */}
         <div
           ref={scrollRef}
           className="flex gap-4 sm:gap-5 overflow-x-auto overflow-y-hidden pb-2 scroll-smooth [&::-webkit-scrollbar]:hidden"
@@ -117,7 +117,7 @@ const AlsoLike = () => {
           {ALSO_LIKE_PRODUCTS.map((product) => (
             <article
               key={product.id}
-              className="shrink-0 w-70 sm:w-75 flex flex-col overflow-hidden rounded-[10px]"
+              className="shrink-0 w-[calc(50%-0.5rem)] sm:w-[calc(25%-0.9375rem)] flex flex-col overflow-hidden rounded-[10px]"
             >
               {/* Image block: grey container + badge + image - same as NewProducts */}
               <div className="bg-white p-1 rounded-[30px] h-75">

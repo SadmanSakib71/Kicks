@@ -15,9 +15,9 @@ const HeroSection = () => {
 
       {/* Main product container - rounded card on mobile only */}
       <div className="relative overflow-hidden rounded-2xl mt-4 shadow-lg lg:rounded-none lg:mt-0 lg:shadow-none">
-        <div className="relative min-h-70 sm:min-h-130 lg:min-h-187.5">
+        <div className="relative min-h-90 sm:min-h-130 lg:min-h-187.5">
           {/* Main image area - mustard/golden fabric with shoe */}
-          <div className="relative min-h-70 sm:min-h-130 lg:min-h-187.5">
+          <div className="relative min-h-90 sm:min-h-130 lg:min-h-187.5">
             <img
               src={mainImage}
               alt="Nike Air Max"
@@ -25,7 +25,7 @@ const HeroSection = () => {
             />
 
             {/* Vertical "Nike product of the year" label - left edge */}
-            <div className="absolute left-2 lg:left-5 rounded-br-2xl rounded-bl-2xl top-1/2 -translate-y-1/2 w-10 h-24 lg:w-50 lg:h-10 -rotate-90 origin-left flex items-center justify-center bg-black z-10">
+            <div className="absolute left-3 lg:left-5 rounded-br-2xl rounded-bl-2xl top-1/2 -translate-y-1/2  lg:w-50 lg:h-10 -rotate-90 origin-left flex items-center justify-center bg-black z-10 py-1 mt-6 px-2">
               <span className="text-white text-[10px] lg:text-xs font-medium uppercase tracking-wider whitespace-nowrap">
                 Nike product of the year
               </span>
@@ -37,7 +37,8 @@ const HeroSection = () => {
                 Nike Air Max
               </h2>
               <p className="text-white/95 text-xs sm:text-base lg:text-lg mb-3 sm:mb-5 max-w-md">
-                Nike introducing the new air max for everyone&apos;s comfort
+                Nike introducing the new air <br /> max for everyone&apos;s
+                comfort
               </p>
               <button
                 type="button"
@@ -48,8 +49,8 @@ const HeroSection = () => {
             </div>
           </div>
 
-          {/* Thumbnail stack - centered on mobile; original position/size on lg+ */}
-          <div className="absolute right-2 sm:right-6 top-1/2 -translate-y-1/2 lg:top-3/4 lg:right-6 lg:-translate-y-1/2 flex flex-col gap-2 sm:gap-3 z-10">
+          {/* Thumbnail stack - bottom-right on mobile (first screenshot); original on lg+ */}
+          <div className="absolute right-2 sm:right-4 bottom-4 sm:bottom-6 lg:bottom-auto lg:top-3/4 lg:right-6 lg:-translate-y-1/2 flex flex-col gap-2 sm:gap-3 z-10">
             <div className="w-14 h-14 sm:w-28 sm:h-28 lg:w-32 lg:h-32 rounded-xl border-2 border-white/90 overflow-hidden shadow-md bg-white shrink-0">
               <img
                 src={sideImage1}

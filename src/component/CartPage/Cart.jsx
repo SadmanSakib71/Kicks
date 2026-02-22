@@ -254,7 +254,7 @@ const Cart = () => {
 
           {/* Right: Order Summary */}
           <div className="lg:col-span-1">
-            <div className="bg-[#F5F5F5] lg:bg-transparent pt-0">
+            <div className="bg-[#F5F5F5] lg:bg-transparent p-6 sm:p-0">
               <h2 className="text-[#2C2C2C] font-bold text-xl sm:text-2xl uppercase tracking-tight mb-6">
                 Order Summary
               </h2>

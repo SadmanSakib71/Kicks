@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
+import { Link } from "react-router-dom";
 import productIcon from "../../assets/product-details-icon.svg";
 import get from "../../Methods/get";
 
@@ -13,6 +14,7 @@ const Categories = () => {
         const list = Array.isArray(data) ? data : [];
         setCategories(
           list.map((c) => ({
+            id: c.id,
             title: c.name?.toUpperCase() ?? "",
             image: c.image ?? "",
             alt: c.name ?? "",
@@ -105,7 +107,7 @@ const Categories = () => {
             >
               {pair.map((category, cardIndex) => (
                 <div
-                  key={`${slideIndex}-${cardIndex}`}
+                  key={category.id ?? `${slideIndex}-${cardIndex}`}
                   className={`relative min-h-70 sm:min-h-80 flex flex-col ${cardIndex === 0 ? "bg-[#ECEEF0]" : ""}`}
                 >
                   {/* Product image - blends with card background */}
@@ -122,13 +124,16 @@ const Categories = () => {
                     <h3 className="text-black font-bold text-sm sm:text-base lg:text-lg uppercase tracking-tight leading-tight max-w-[60%]">
                       {category.title}
                     </h3>
-                    <button
-                      type="button"
-                      aria-label={`View ${category.title}`}
-                      className="w-10 h-10 sm:w-11 sm:h-11 rounded-lg bg-black text-white flex items-center justify-center hover:bg-gray-800 transition-colors shrink-0 cursor-pointer"
-                    >
-                      <img src={productIcon} alt="" />
-                    </button>
+
+                    <Link to={`/category-product/${category?.id}`}>
+                      <button
+                        type="button"
+                        aria-label={`View ${category.title}`}
+                        className="w-10 h-10 sm:w-11 sm:h-11 rounded-lg bg-black text-white flex items-center justify-center hover:bg-gray-800 transition-colors shrink-0 cursor-pointer"
+                      >
+                        <img src={productIcon} alt="" />
+                      </button>
+                    </Link>
                   </div>
                 </div>
               ))}

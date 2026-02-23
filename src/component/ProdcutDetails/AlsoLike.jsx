@@ -1,51 +1,25 @@
-import { useRef } from "react";
+import { useRef, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-
-const ALSO_LIKE_PRODUCTS = [
-  {
-    id: 1,
-    name: "ADIDAS 4DFWD X PARLEY RUNNING SHOES",
-    price: 125,
-    image:
-      "https://images.unsplash.com/photo-1608231387042-66d1773070a5?w=400&q=80",
-    alt: "Adidas 4DFWD x Parley running shoes navy",
-  },
-  {
-    id: 2,
-    name: "ADIDAS 4DFWD X PARLEY RUNNING SHOES",
-    price: 125,
-    image:
-      "https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=400&q=80",
-    alt: "Adidas running shoes white green",
-  },
-  {
-    id: 3,
-    name: "ADIDAS 4DFWD X PARLEY RUNNING SHOES",
-    price: 125,
-    image:
-      "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400&q=80",
-    alt: "Adidas running shoes olive",
-  },
-  {
-    id: 4,
-    name: "ADIDAS 4DFWD X PARLEY RUNNING SHOES",
-    price: 125,
-    image:
-      "https://images.unsplash.com/photo-1556906781-9a412961c28c?w=400&q=80",
-    alt: "Adidas running shoes dark gray",
-  },
-  {
-    id: 5,
-    name: "ADIDAS 4DFWD X PARLEY RUNNING SHOES",
-    price: 125,
-    image:
-      "https://images.unsplash.com/photo-1608231387042-66d1773070a5?w=400&q=80",
-    alt: "Adidas 4DFWD x Parley running shoes",
-  },
-];
+import get from "../../Methods/get";
 
 const AlsoLike = () => {
   const scrollRef = useRef(null);
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    get("https://api.escuelajs.co/api/v1/products").then((data) => {
+      const mapped = Array.isArray(data)
+        ? data.map((p) => ({
+            id: p.id,
+            name: p.title ?? p.name,
+            price: p.price,
+            image: Array.isArray(p.images) ? p.images[0] : (p.image ?? ""),
+            alt: p.title ?? p.name ?? "",
+          }))
+        : [];
+      setProducts(mapped);
+    });
+  }, []);
 
   const scroll = (direction) => {
     if (!scrollRef.current) return;
@@ -114,42 +88,48 @@ const AlsoLike = () => {
           className="flex gap-4 sm:gap-5 overflow-x-auto overflow-y-hidden pb-2 scroll-smooth [&::-webkit-scrollbar]:hidden"
           style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
         >
-          {ALSO_LIKE_PRODUCTS.map((product) => (
-            <article
-              key={product.id}
-              className="shrink-0 w-[calc(50%-0.5rem)] sm:w-[calc(25%-0.9375rem)] flex flex-col overflow-hidden rounded-[10px]"
-            >
-              {/* Image block: grey container + badge + image - same as NewProducts */}
-              <div className="bg-white p-1 rounded-[30px] h-75">
-                <div className="relative rounded-[30px] bg-[#E6E6E6] h-full flex items-center justify-center p-4">
-                  <div className="absolute top-0 left-0 z-10 w-16 h-11 bg-linear-to-r from-blue-500 to-indigo-500 text-white flex items-center justify-center rounded-tl-[30px] rounded-br-[30px]">
-                    New
+          {products.length === 0 ? (
+            <p className="text-center text-[#2E2E2E] py-8 w-full">
+              There is no data
+            </p>
+          ) : (
+            products.map((product) => (
+              <article
+                key={product.id}
+                className="shrink-0 w-[calc(50%-0.5rem)] sm:w-[calc(25%-0.9375rem)] flex flex-col overflow-hidden rounded-[10px]"
+              >
+                {/* Image block: grey container + badge + image - same as NewProducts */}
+                <div className="bg-white p-1 rounded-[30px] h-75">
+                  <div className="relative rounded-[30px] bg-[#E6E6E6] h-full flex items-center justify-center p-4">
+                    <div className="absolute top-0 left-0 z-10 w-16 h-11 bg-linear-to-r from-blue-500 to-indigo-500 text-white flex items-center justify-center rounded-tl-[30px] rounded-br-[30px]">
+                      New
+                    </div>
+                    <img
+                      src={product.image}
+                      alt={product.alt}
+                      className="w-full h-auto max-h-40 sm:max-h-44 object-contain object-center"
+                    />
                   </div>
-                  <img
-                    src={product.image}
-                    alt={product.alt}
-                    className="w-full h-auto max-h-40 sm:max-h-44 object-contain object-center"
-                  />
                 </div>
-              </div>
 
-              {/* Title: padding aligned with card - same as NewProducts */}
-              <h3 className="text-[#222222] font-bold text-base uppercase tracking-tight leading-snug pt-4 pb-3">
-                {product.name}
-              </h3>
+                {/* Title: padding aligned with card - same as NewProducts */}
+                <h3 className="text-[#222222] font-bold text-base uppercase tracking-tight leading-snug pt-4 pb-3">
+                  {product.name}
+                </h3>
 
-              {/* Button: full width, same bottom radius as card, price in orange - same as NewProducts */}
-              <Link to="/Product-details">
-                <button
-                  type="button"
-                  className="cursor-pointer mt-auto w-full bg-[#222222] text-white uppercase tracking-wide text-sm py-4 px-4 rounded-xl hover:bg-black transition-colors"
-                >
-                  <span>VIEW PRODUCT - </span>
-                  <span className="text-[#FFC107]">${product.price}</span>
-                </button>
-              </Link>
-            </article>
-          ))}
+                {/* Button: full width, same bottom radius as card, price in orange - same as NewProducts */}
+                <Link to={`/Product-details/${product?.id}`}>
+                  <button
+                    type="button"
+                    className="cursor-pointer mt-auto w-full bg-[#222222] text-white uppercase tracking-wide text-sm py-4 px-4 rounded-xl hover:bg-black transition-colors"
+                  >
+                    <span>VIEW PRODUCT - </span>
+                    <span className="text-[#FFC107]">${product.price}</span>
+                  </button>
+                </Link>
+              </article>
+            ))
+          )}
         </div>
       </div>
     </section>

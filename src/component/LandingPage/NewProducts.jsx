@@ -1,4 +1,6 @@
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import get from "../../Methods/get";
 
 const NEW_PRODUCTS = [
   {
@@ -36,6 +38,25 @@ const NEW_PRODUCTS = [
 ];
 
 const NewProducts = () => {
+  const [newProducts, setNewProducts] = useState([]);
+
+  useEffect(() => {
+    get("https://api.escuelajs.co/api/v1/products").then((data) => {
+      setNewProducts(data);
+    });
+  }, []);
+
+  const products =
+    newProducts.length > 0
+      ? newProducts.map((p) => ({
+          id: p.id,
+          name: p.title ?? p.name,
+          price: p.price,
+          image: Array.isArray(p.images) ? p.images[0] : (p.image ?? ""),
+          alt: p.title ?? p.name ?? "",
+        }))
+      : NEW_PRODUCTS;
+
   return (
     <section className="mt-4 mb-6">
       <div className="max-w-7xl mx-auto">
@@ -61,7 +82,7 @@ const NewProducts = () => {
 
         {/* Product grid */}
         <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
-          {NEW_PRODUCTS.map((product) => (
+          {products.map((product) => (
             <article
               key={product.id}
               className="rounded-[10px] flex flex-col  overflow-hidden"

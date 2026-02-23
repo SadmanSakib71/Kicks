@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import get from "../../Methods/get";
 import AlsoLike from "./AlsoLike";
+import Loading from "../Loading";
 
 const PRODUCT = {
   badge: "New Release",
@@ -20,11 +21,13 @@ const ProductDetails = () => {
   const [selectedColor, setSelectedColor] = useState(0);
   const [selectedSize, setSelectedSize] = useState(38);
   const [productDetails, setProductDetails] = useState({});
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     get(`https://api.escuelajs.co/api/v1/products/${id}`)
       .then((data) => setProductDetails(data))
-      .catch((err) => console.error("Failed to fetch product:", err));
+      .catch((err) => console.error("Failed to fetch product:", err))
+      .finally(() => setLoading(false));
   }, [id]);
 
   const images = productDetails?.images?.length
@@ -34,6 +37,14 @@ const ProductDetails = () => {
     : [];
   const name = productDetails?.title ?? null;
   const price = productDetails?.price ?? null;
+
+  if (loading) {
+    return (
+      <div className="py-8 lg:py-12">
+        <Loading className="min-h-60" />
+      </div>
+    );
+  }
 
   return (
     <div className="">

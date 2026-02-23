@@ -1,29 +1,33 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import get from "../Methods/get";
+import Loading from "./Loading";
 
 const SameCategoryItems = () => {
   const { id: categoryId } = useParams();
   const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    get("https://api.escuelajs.co/api/v1/products").then((data) => {
-      const list = Array.isArray(data) ? data : [];
-      const filtered = list.filter(
-        (p) =>
-          p.category?.id === Number(categoryId) ||
-          p.category?.id === categoryId,
-      );
-      setProducts(
-        filtered.map((p) => ({
-          id: p.id,
-          name: p.title ?? p.name,
-          price: p.price,
-          image: Array.isArray(p.images) ? p.images[0] : (p.image ?? ""),
-          alt: p.title ?? p.name ?? "",
-        })),
-      );
-    });
+    get("https://api.escuelajs.co/api/v1/products")
+      .then((data) => {
+        const list = Array.isArray(data) ? data : [];
+        const filtered = list.filter(
+          (p) =>
+            p.category?.id === Number(categoryId) ||
+            p.category?.id === categoryId,
+        );
+        setProducts(
+          filtered.map((p) => ({
+            id: p.id,
+            name: p.title ?? p.name,
+            price: p.price,
+            image: Array.isArray(p.images) ? p.images[0] : (p.image ?? ""),
+            alt: p.title ?? p.name ?? "",
+          })),
+        );
+      })
+      .finally(() => setLoading(false));
   }, [categoryId]);
 
   return (
@@ -38,7 +42,11 @@ const SameCategoryItems = () => {
         </div>
 
         <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
-          {products.length === 0 ? (
+          {loading ? (
+            <div className="col-span-full">
+              <Loading />
+            </div>
+          ) : products.length === 0 ? (
             <p className="col-span-full text-center text-[#2E2E2E] py-8">
               No products in this category
             </p>

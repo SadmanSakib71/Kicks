@@ -1,24 +1,28 @@
 import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import get from "../../Methods/get";
+import Loading from "../Loading";
 
 const AlsoLike = () => {
   const scrollRef = useRef(null);
   const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    get("https://api.escuelajs.co/api/v1/products").then((data) => {
-      const mapped = Array.isArray(data)
-        ? data.map((p) => ({
-            id: p.id,
-            name: p.title ?? p.name,
-            price: p.price,
-            image: Array.isArray(p.images) ? p.images[0] : (p.image ?? ""),
-            alt: p.title ?? p.name ?? "",
-          }))
-        : [];
-      setProducts(mapped);
-    });
+    get("https://api.escuelajs.co/api/v1/products")
+      .then((data) => {
+        const mapped = Array.isArray(data)
+          ? data.map((p) => ({
+              id: p.id,
+              name: p.title ?? p.name,
+              price: p.price,
+              image: Array.isArray(p.images) ? p.images[0] : (p.image ?? ""),
+              alt: p.title ?? p.name ?? "",
+            }))
+          : [];
+        setProducts(mapped);
+      })
+      .finally(() => setLoading(false));
   }, []);
 
   const scroll = (direction) => {
@@ -64,7 +68,9 @@ const AlsoLike = () => {
           className="flex gap-4 sm:gap-5 overflow-x-auto overflow-y-hidden pb-2 scroll-smooth [&::-webkit-scrollbar]:hidden"
           style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
         >
-          {products.length === 0 ? (
+          {loading ? (
+            <Loading className="w-full min-h-75" />
+          ) : products.length === 0 ? (
             <p className="text-center text-[#2E2E2E] py-8 w-full">
               There is no data
             </p>

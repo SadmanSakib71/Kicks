@@ -1,14 +1,16 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import get from "../Methods/get";
+import Loading from "./Loading";
 
 const AllNewItems = () => {
   const [newProducts, setNewProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    get("https://api.escuelajs.co/api/v1/products").then((data) => {
-      setNewProducts(data);
-    });
+    get("https://api.escuelajs.co/api/v1/products")
+      .then((data) => setNewProducts(data))
+      .finally(() => setLoading(false));
   }, []);
 
   const products = Array.isArray(newProducts)
@@ -35,7 +37,11 @@ const AllNewItems = () => {
 
         {/* Product grid — same layout as NewProducts */}
         <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
-          {products.length === 0 ? (
+          {loading ? (
+            <div className="col-span-full">
+              <Loading />
+            </div>
+          ) : products.length === 0 ? (
             <p className="col-span-full text-center text-[#2E2E2E] py-8">
               There is no data
             </p>

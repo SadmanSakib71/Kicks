@@ -2,11 +2,13 @@ import { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import productIcon from "../../assets/product-details-icon.svg";
 import get from "../../Methods/get";
+import Loading from "../Loading";
 
 const CATEGORIES_API = "https://api.escuelajs.co/api/v1/categories";
 
 const Categories = () => {
   const [categories, setCategories] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     get(CATEGORIES_API)
@@ -21,7 +23,8 @@ const Categories = () => {
           })),
         );
       })
-      .catch(() => setCategories([]));
+      .catch(() => setCategories([]))
+      .finally(() => setLoading(false));
   }, []);
 
   // Chunk into pairs so we show 2 cards per slide
@@ -74,6 +77,9 @@ const Categories = () => {
 
       {/* Content area with rounded top - carousel shows 2 cards at a time */}
       <div className="bg-[#F8F8F8] rounded-tl-2xl sm:rounded-tl-3xl overflow-hidden">
+        {loading ? (
+          <Loading className="min-h-70 sm:min-h-80" />
+        ) : (
         <div
           className="flex transition-transform duration-300 ease-out"
           style={{ transform: `translateX(-${currentIndex * 100}%)` }}
@@ -118,6 +124,7 @@ const Categories = () => {
             </div>
           ))}
         </div>
+        )}
       </div>
     </section>
   );

@@ -1,6 +1,6 @@
 # KICKS
 
-LIVE LINK:
+LIVE LINK: https://kicks-rho.vercel.app/
 
 A modern, responsive e-commerce web application for sneakers and footwear. Built with React and Vite, it showcases product listings, categories, product details with add-to-cart, and a full shopping cart experience with persistent storage.
 

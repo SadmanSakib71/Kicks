@@ -1,27 +1,11 @@
+import { useCart } from "@/context/CartContext";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { useCart } from "@/context/CartContext";
 import logo from "../assets/Logo.svg";
 
 const Navbar = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { itemCount: cartCount } = useCart();
-
-  const leftLinks = [
-    { label: "New Drops", emoji: "🔥", href: "#" },
-    { label: "Men", dropdown: true, href: "#" },
-    { label: "Women", dropdown: true, href: "#" },
-  ];
-
-  const ChevronDown = () => (
-    <svg className="ml-0.5 h-3.5 w-3.5" fill="currentColor" viewBox="0 0 20 20">
-      <path
-        fillRule="evenodd"
-        d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-        clipRule="evenodd"
-      />
-    </svg>
-  );
 
   return (
     <header className="sticky top-0 z-50 w-full pt-4">
@@ -38,49 +22,45 @@ const Navbar = () => {
             aria-label="Toggle menu"
           >
             {mobileMenuOpen ? (
-              <svg
-                className="h-5 w-5"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M6 18L18 6M6 6l12 12"
-                />
-              </svg>
+              <i class="fas fa-times"></i>
             ) : (
-              <svg
-                className="h-5 w-5"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M4 6h16M4 12h16M4 18h16"
-                />
-              </svg>
+              <i class="fas fa-bars"></i>
             )}
           </button>
           {/* Nav links - desktop only */}
           <ul className="hidden items-center gap-6 sm:gap-8 lg:flex">
-            {leftLinks.map((link) => (
-              <li key={link.label}>
-                <a
-                  href={link.href}
-                  className="flex items-center text-sm font-medium text-neutral-800 transition hover:text-neutral-600"
-                >
-                  {link.label}
-                  {link.emoji && <span className="ml-0.5">{link.emoji}</span>}
-                  {link.dropdown && <ChevronDown />}
-                </a>
-              </li>
-            ))}
+            <li>
+              <a
+                href={"/all-new-items"}
+                className="flex items-center text-sm font-medium text-neutral-800 transition hover:text-neutral-600"
+              >
+                New Drops<span className="ml-1">🔥</span>
+              </a>
+            </li>
+            <li>
+              <a
+                href={""}
+                className="flex items-center text-sm font-medium text-neutral-800 transition hover:text-neutral-600"
+              >
+                Men{" "}
+                <span className="ml-1">
+                  {" "}
+                  <i class="fas fa-chevron-down"></i>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                href={""}
+                className="flex items-center text-sm font-medium text-neutral-800 transition hover:text-neutral-600"
+              >
+                Women{" "}
+                <span className="ml-1">
+                  {" "}
+                  <i class="fas fa-chevron-down"></i>
+                </span>
+              </a>
+            </li>
           </ul>
         </div>
 
@@ -125,19 +105,41 @@ const Navbar = () => {
       {mobileMenuOpen && (
         <div className="mt-2 w-full rounded-2xl border border-neutral-200 bg-white px-4 py-3 shadow-lg lg:hidden">
           <ul className="flex flex-col gap-1">
-            {leftLinks.map((link) => (
-              <li key={link.label}>
-                <a
-                  href={link.href}
-                  className="flex items-center rounded-lg px-3 py-2 text-sm font-medium text-neutral-800 hover:bg-neutral-100"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  {link.label}
-                  {link.emoji && <span className="ml-1">{link.emoji}</span>}
-                  {link.dropdown && <ChevronDown />}
-                </a>
-              </li>
-            ))}
+            <li>
+              <a
+                href={"/all-new-items"}
+                className="flex items-center rounded-lg px-3 py-2 text-sm font-medium text-neutral-800 hover:bg-neutral-100"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                New Drops<span className="ml-1">🔥</span>
+              </a>
+            </li>
+            <li>
+              <a
+                href={""}
+                className="flex items-center rounded-lg px-3 py-2 text-sm font-medium text-neutral-800 hover:bg-neutral-100"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Men{" "}
+                <span className="ml-1">
+                  {" "}
+                  <i class="fas fa-chevron-down"></i>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                href={""}
+                className="flex items-center rounded-lg px-3 py-2 text-sm font-medium text-neutral-800 hover:bg-neutral-100"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Women{" "}
+                <span className="ml-1">
+                  {" "}
+                  <i class="fas fa-chevron-down"></i>
+                </span>
+              </a>
+            </li>
           </ul>
         </div>
       )}

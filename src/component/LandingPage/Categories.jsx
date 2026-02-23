@@ -58,18 +58,7 @@ const Categories = () => {
             disabled={currentIndex === 0}
             className="w-9 h-9 rounded-lg bg-[#888888] text-white flex items-center justify-center hover:bg-[#777] transition-colors disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-[#888888]"
           >
-            <svg
-              width="16"
-              height="16"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <path d="M15 18l-6-6 6-6" />
-            </svg>
+            <i class="fas fa-chevron-left"></i>
           </button>
           <button
             type="button"
@@ -78,18 +67,7 @@ const Categories = () => {
             disabled={currentIndex >= maxIndex}
             className="w-9 h-9 rounded-lg bg-white text-black flex items-center justify-center hover:bg-gray-100 transition-colors disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-white"
           >
-            <svg
-              width="16"
-              height="16"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <path d="M9 18l6-6-6-6" />
-            </svg>
+            <i class="fas fa-chevron-right"></i>
           </button>
         </div>
       </div>

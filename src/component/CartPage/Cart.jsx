@@ -1,17 +1,12 @@
-import { useState } from "react";
 import { useCart } from "@/context/CartContext";
+import { useState } from "react";
 import AlsoLike from "../ProdcutDetails/AlsoLike";
 
 const DELIVERY_FEE = 6.99;
 
 const Cart = () => {
-  const {
-    cartItems,
-    updateQuantity,
-    updateSize,
-    removeItem,
-    itemCount,
-  } = useCart();
+  const { cartItems, updateQuantity, updateSize, removeItem, itemCount } =
+    useCart();
   const [sizeOpen, setSizeOpen] = useState(null);
   const [qtyOpen, setQtyOpen] = useState(null);
 
@@ -128,7 +123,9 @@ const Cart = () => {
                                       <button
                                         key={s}
                                         type="button"
-                                        onClick={() => handleUpdateSize(item.id, s)}
+                                        onClick={() =>
+                                          handleUpdateSize(item.id, s)
+                                        }
                                         className="block w-full text-left px-4 py-2 text-sm hover:bg-gray-100"
                                       >
                                         {s}

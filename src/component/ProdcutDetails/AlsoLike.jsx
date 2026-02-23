@@ -1,4 +1,4 @@
-import { useRef, useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import get from "../../Methods/get";
 
@@ -45,19 +45,7 @@ const AlsoLike = () => {
               className="w-11 h-11 rounded-lg bg-[#858582] text-gray-300 flex items-center justify-center hover:bg-[#1a1a1a] hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-[#2E2E2E] focus:ring-offset-2 focus:ring-offset-white"
               aria-label="Scroll left"
             >
-              <svg
-                className="w-5 h-5"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M15 19l-7-7 7-7"
-                />
-              </svg>
+              <i class="fas fa-chevron-left"></i>
             </button>
             <button
               type="button"
@@ -65,19 +53,7 @@ const AlsoLike = () => {
               className="w-11 h-11 rounded-lg bg-[#858582] text-gray-300 flex items-center justify-center hover:bg-[#1a1a1a] hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-[#2E2E2E] focus:ring-offset-2 focus:ring-offset-white"
               aria-label="Scroll right"
             >
-              <svg
-                className="w-5 h-5"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M9 5l7 7-7 7"
-                />
-              </svg>
+              <i class="fas fa-chevron-right"></i>
             </button>
           </div>
         </div>

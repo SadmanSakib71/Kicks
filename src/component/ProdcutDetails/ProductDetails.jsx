@@ -1,26 +1,39 @@
-import { useState } from "react";
+import { useCart } from "@/context/CartContext";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import get from "../../Methods/get";
 import AlsoLike from "./AlsoLike";
 
 const PRODUCT = {
-  name: "ADIDAS 4DFWD X PARLEY RUNNING SHOES",
-  price: 125,
   badge: "New Release",
   colors: [
     { name: "Shadow Navy", value: "#1e3a5f" },
     { name: "Army Green", value: "#4a5d23" },
   ],
   sizes: [38, 39, 40, 41, 42, 43, 44, 45, 46, 47],
-  images: [
-    "https://images.unsplash.com/photo-1608231387042-66d1773070a5?w=600&q=80",
-    "https://images.unsplash.com/photo-1600185365926-3a2ce3cdb9eb?w=600&q=80",
-    "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=600&q=80",
-    "https://images.unsplash.com/photo-1556906781-9a412961c28c?w=600&q=80",
-  ],
 };
 
 const ProductDetails = () => {
+  const { id } = useParams();
+  const { addToCart } = useCart();
+
   const [selectedColor, setSelectedColor] = useState(0);
   const [selectedSize, setSelectedSize] = useState(38);
+  const [productDetails, setProductDetails] = useState({});
+
+  useEffect(() => {
+    get(`https://api.escuelajs.co/api/v1/products/${id}`)
+      .then((data) => setProductDetails(data))
+      .catch((err) => console.error("Failed to fetch product:", err));
+  }, [id]);
+
+  const images = productDetails?.images?.length
+    ? productDetails.images.map((img) =>
+        typeof img === "string" ? img : img.url,
+      )
+    : [];
+  const name = productDetails?.title ?? null;
+  const price = productDetails?.price ?? null;
 
   return (
     <div className="">
@@ -28,14 +41,14 @@ const ProductDetails = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14 items-start">
           {/* Left: 2x2 image grid */}
           <div className="grid grid-cols-2 gap-3 sm:gap-4">
-            {PRODUCT.images.map((src, i) => (
+            {images.map((src, i) => (
               <div
                 key={i}
                 className="aspect-square bg-white rounded-lg overflow-hidden shadow-sm"
               >
                 <img
                   src={src}
-                  alt={`${PRODUCT.name} view ${i + 1}`}
+                  alt={`${name} view ${i + 1}`}
                   className="w-full h-full object-cover"
                 />
               </div>
@@ -48,10 +61,10 @@ const ProductDetails = () => {
               {PRODUCT.badge}
             </span>
             <h1 className="text-[#2E2E2E] font-bold uppercase tracking-tight text-xl sm:text-2xl mb-2">
-              {PRODUCT.name}
+              {name}
             </h1>
             <p className="text-[#4C7AF2] font-bold text-2xl sm:text-3xl mb-6">
-              ${PRODUCT.price.toFixed(2)}
+              ${Number(price).toFixed(2)}
             </p>
 
             {/* Color */}
@@ -116,7 +129,21 @@ const ProductDetails = () => {
             <div className="flex gap-2 mb-4">
               <button
                 type="button"
-                className="flex-1 bg-[#2E2E2E] text-white font-semibold uppercase text-sm tracking-wide py-3.5 px-6 rounded-lg hover:bg-[#1a1a1a] transition-colors"
+                onClick={() => {
+                  if (!productDetails?.id || !name || price == null) return;
+                  const image = images[0] || "";
+                  addToCart({
+                    productId: productDetails.id,
+                    name,
+                    category: productDetails?.category?.name ?? "Product",
+                    color: PRODUCT.colors[selectedColor].name,
+                    price,
+                    size: selectedSize,
+                    quantity: 1,
+                    image,
+                  });
+                }}
+                className="flex-1 cursor-pointer bg-[#2E2E2E] text-white font-semibold uppercase text-sm tracking-wide py-3.5 px-6 rounded-lg hover:bg-[#1a1a1a] transition-colors"
               >
                 Add to cart
               </button>

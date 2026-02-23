@@ -47,45 +47,48 @@ const NewProducts = () => {
         {/* Product grid */}
         <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
           {products.length === 0 ? (
-            <p className="col-span-full text-center text-[#2E2E2E] py-8">There is no data</p>
+            <p className="col-span-full text-center text-[#2E2E2E] py-8">
+              There is no data
+            </p>
           ) : (
-          products.map((product) => (
-            <article
-              key={product.id}
-              className="rounded-[10px] flex flex-col  overflow-hidden"
-            >
-              {/* Image block: grey container + badge + image */}
-              <div className="bg-white p-1 rounded-[30px] h-75">
-                <div className="relative rounded-[30px] bg-[#eceef0] h-full flex items-center justify-center p-4">
-                  <div className="absolute top-0 left-0 z-10 w-16 h-11 bg-linear-to-r from-blue-500 to-indigo-500 text-white flex items-center justify-center  rounded-tl-[30px] rounded-br-[30px]">
-                    New
+            products.map((product) => (
+              <article
+                key={product.id}
+                className="rounded-[10px] flex flex-col  overflow-hidden"
+              >
+                {/* Image block: grey container + badge + image */}
+                <div className="bg-white p-1 rounded-[30px] h-75">
+                  <div className="relative rounded-[30px] bg-[#eceef0] h-full flex items-center justify-center p-4">
+                    <div className="absolute top-0 left-0 z-10 w-16 h-11 bg-linear-to-r from-blue-500 to-indigo-500 text-white flex items-center justify-center  rounded-tl-[30px] rounded-br-[30px]">
+                      New
+                    </div>
+                    <img
+                      src={product.image}
+                      alt={product.alt}
+                      className="w-full h-auto max-h-40 sm:max-h-44 object-contain object-center"
+                    />
                   </div>
-                  <img
-                    src={product.image}
-                    alt={product.alt}
-                    className="w-full h-auto max-h-40 sm:max-h-44 object-contain object-center"
-                  />
                 </div>
-              </div>
 
-              {/* Title: padding aligned with card */}
-              <h3 className="text-[#222222] font-bold text-base uppercase tracking-tight leading-snug pt-4 pb-3">
-                {product.name}
-              </h3>
+                {/* Title: padding aligned with card */}
+                <h3 className="text-[#222222] font-bold text-base uppercase tracking-tight leading-snug pt-4 pb-3">
+                  {product.name}
+                </h3>
 
-              {/* Button: full width, same bottom radius as card, price in orange */}
-              <Link to="/Product-details">
-                {" "}
-                <button
-                  type="button"
-                  className="cursor-pointer mt-auto w-full bg-[#222222] text-white uppercase tracking-wide text-sm py-4 px-4 rounded-xl hover:bg-black transition-colors"
-                >
-                  <span>VIEW PRODUCT - </span>
-                  <span className="text-[#FFC107]">${product.price}</span>
-                </button>
-              </Link>
-            </article>
-          ))
+                {/* Button: full width, same bottom radius as card, price in orange */}
+
+                <Link to={`/Product-details/${product?.id}`}>
+                  {" "}
+                  <button
+                    type="button"
+                    className="cursor-pointer mt-auto w-full bg-[#222222] text-white uppercase tracking-wide text-sm py-4 px-4 rounded-xl hover:bg-black transition-colors"
+                  >
+                    <span>VIEW PRODUCT - </span>
+                    <span className="text-[#FFC107]">${product.price}</span>
+                  </button>
+                </Link>
+              </article>
+            ))
           )}
         </div>
       </div>

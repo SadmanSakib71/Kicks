@@ -1,24 +1,17 @@
 import { useState } from "react";
+import { useCart } from "@/context/CartContext";
 import AlsoLike from "../ProdcutDetails/AlsoLike";
 
 const DELIVERY_FEE = 6.99;
 
-const initialCartItems = [
-  {
-    id: 1,
-    name: "DROPSET TRAINER SHOES",
-    category: "Men's Road Running Shoes",
-    color: "Enamel Blue/ University White",
-    price: 130,
-    size: 10,
-    quantity: 1,
-    image:
-      "https://images.unsplash.com/photo-1608231387042-66d1773070a5?w=400&q=80",
-  },
-];
-
 const Cart = () => {
-  const [cartItems, setCartItems] = useState(initialCartItems);
+  const {
+    cartItems,
+    updateQuantity,
+    updateSize,
+    removeItem,
+    itemCount,
+  } = useCart();
   const [sizeOpen, setSizeOpen] = useState(null);
   const [qtyOpen, setQtyOpen] = useState(null);
 
@@ -27,27 +20,15 @@ const Cart = () => {
     0,
   );
   const total = subtotal + DELIVERY_FEE;
-  const itemCount = cartItems.reduce((sum, item) => sum + item.quantity, 0);
 
-  const updateQuantity = (id, newQty) => {
-    if (newQty < 1) return;
-    setCartItems((prev) =>
-      prev.map((item) =>
-        item.id === id ? { ...item, quantity: newQty } : item,
-      ),
-    );
+  const handleUpdateQuantity = (id, newQty) => {
+    updateQuantity(id, newQty);
     setQtyOpen(null);
   };
 
-  const updateSize = (id, newSize) => {
-    setCartItems((prev) =>
-      prev.map((item) => (item.id === id ? { ...item, size: newSize } : item)),
-    );
+  const handleUpdateSize = (id, newSize) => {
+    updateSize(id, newSize);
     setSizeOpen(null);
-  };
-
-  const removeItem = (id) => {
-    setCartItems((prev) => prev.filter((item) => item.id !== id));
   };
 
   const sizes = [8, 9, 10, 11, 12];
@@ -147,7 +128,7 @@ const Cart = () => {
                                       <button
                                         key={s}
                                         type="button"
-                                        onClick={() => updateSize(item.id, s)}
+                                        onClick={() => handleUpdateSize(item.id, s)}
                                         className="block w-full text-left px-4 py-2 text-sm hover:bg-gray-100"
                                       >
                                         {s}
@@ -191,7 +172,7 @@ const Cart = () => {
                                         key={q}
                                         type="button"
                                         onClick={() =>
-                                          updateQuantity(item.id, q)
+                                          handleUpdateQuantity(item.id, q)
                                         }
                                         className="block w-full text-left px-4 py-2 text-sm hover:bg-gray-100"
                                       >

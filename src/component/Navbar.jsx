@@ -1,10 +1,11 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { useCart } from "@/context/CartContext";
 import logo from "../assets/Logo.svg";
 
 const Navbar = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const cartCount = 0;
+  const { itemCount: cartCount } = useCart();
 
   const leftLinks = [
     { label: "New Drops", emoji: "🔥", href: "#" },

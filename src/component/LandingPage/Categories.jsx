@@ -1,48 +1,35 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import productIcon from "../../assets/product-details-icon.svg";
+import get from "../../Methods/get";
 
-const CATEGORIES = [
-  {
-    title: "LIFESTYLE SHOES",
-    image:
-      "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=600&q=80",
-    alt: "Lifestyle sneakers",
-  },
-  {
-    title: "BASKETBALL SHOES",
-    image:
-      "https://images.unsplash.com/photo-1556906781-9a412961c28c?w=600&q=80",
-    alt: "Basketball sneakers",
-  },
-  {
-    title: "RUNNING SHOES",
-    image:
-      "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=600&q=80",
-    alt: "Running sneakers",
-  },
-  {
-    title: "TRAINING SHOES",
-    image:
-      "https://images.unsplash.com/photo-1556906781-9a412961c28c?w=600&q=80",
-    alt: "Training sneakers",
-  },
-  {
-    title: "CASUAL SHOES",
-    image:
-      "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=600&q=80",
-    alt: "Casual sneakers",
-  },
-];
+const CATEGORIES_API = "https://api.escuelajs.co/api/v1/categories";
 
 const Categories = () => {
+  const [categories, setCategories] = useState([]);
+
+  useEffect(() => {
+    get(CATEGORIES_API)
+      .then((data) => {
+        const list = Array.isArray(data) ? data : [];
+        setCategories(
+          list.map((c) => ({
+            title: c.name?.toUpperCase() ?? "",
+            image: c.image ?? "",
+            alt: c.name ?? "",
+          })),
+        );
+      })
+      .catch(() => setCategories([]));
+  }, []);
+
   // Chunk into pairs so we show 2 cards per slide
   const slides = useMemo(() => {
     const pairs = [];
-    for (let i = 0; i < CATEGORIES.length; i += 2) {
-      pairs.push(CATEGORIES.slice(i, i + 2));
+    for (let i = 0; i < categories.length; i += 2) {
+      pairs.push(categories.slice(i, i + 2));
     }
     return pairs;
-  }, []);
+  }, [categories]);
 
   const [currentIndex, setCurrentIndex] = useState(0);
   const maxIndex = slides.length - 1;

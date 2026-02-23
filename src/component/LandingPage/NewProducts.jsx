@@ -2,41 +2,6 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import get from "../../Methods/get";
 
-const NEW_PRODUCTS = [
-  {
-    id: 1,
-    name: "ADIDAS 4DFWD X PARLEY RUNNING SHOES",
-    price: 125,
-    image:
-      "https://images.unsplash.com/photo-1608231387042-66d1773070a5?w=400&q=80",
-    alt: "Adidas 4DFWD x Parley running shoes navy",
-  },
-  {
-    id: 2,
-    name: "ADIDAS 4DFWD X PARLEY RUNNING SHOES",
-    price: 125,
-    image:
-      "https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=400&q=80",
-    alt: "Adidas running shoes white green",
-  },
-  {
-    id: 3,
-    name: "ADIDAS 4DFWD X PARLEY RUNNING SHOES",
-    price: 125,
-    image:
-      "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400&q=80",
-    alt: "Adidas running shoes olive",
-  },
-  {
-    id: 4,
-    name: "ADIDAS 4DFWD X PARLEY RUNNING SHOES",
-    price: 125,
-    image:
-      "https://images.unsplash.com/photo-1556906781-9a412961c28c?w=400&q=80",
-    alt: "Adidas running shoes dark gray",
-  },
-];
-
 const NewProducts = () => {
   const [newProducts, setNewProducts] = useState([]);
 
@@ -46,16 +11,15 @@ const NewProducts = () => {
     });
   }, []);
 
-  const products =
-    newProducts.length > 0
-      ? newProducts.map((p) => ({
-          id: p.id,
-          name: p.title ?? p.name,
-          price: p.price,
-          image: Array.isArray(p.images) ? p.images[0] : (p.image ?? ""),
-          alt: p.title ?? p.name ?? "",
-        }))
-      : NEW_PRODUCTS;
+  const products = Array.isArray(newProducts)
+    ? newProducts.map((p) => ({
+        id: p.id,
+        name: p.title ?? p.name,
+        price: p.price,
+        image: Array.isArray(p.images) ? p.images[0] : (p.image ?? ""),
+        alt: p.title ?? p.name ?? "",
+      }))
+    : [];
 
   return (
     <section className="mt-4 mb-6">
@@ -82,7 +46,10 @@ const NewProducts = () => {
 
         {/* Product grid */}
         <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
-          {products.map((product) => (
+          {products.length === 0 ? (
+            <p className="col-span-full text-center text-[#2E2E2E] py-8">There is no data</p>
+          ) : (
+          products.map((product) => (
             <article
               key={product.id}
               className="rounded-[10px] flex flex-col  overflow-hidden"
@@ -118,7 +85,8 @@ const NewProducts = () => {
                 </button>
               </Link>
             </article>
-          ))}
+          ))
+          )}
         </div>
       </div>
     </section>

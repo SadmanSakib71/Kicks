@@ -88,11 +88,7 @@ const Navbar = () => {
           href="/"
           className="absolute left-1/2 top-1/2 flex -translate-x-1/2 -translate-y-1/2 items-center lg:static lg:translate-x-0 lg:translate-y-0 lg:justify-self-center"
         >
-          <img
-            src={logo}
-            alt="KICKS"
-            className="h-5 w-auto sm:h-6"
-          />
+          <img src={logo} alt="KICKS" className="h-5 w-auto sm:h-6" />
         </a>
 
         {/* Right: User + Cart badge on mobile; Search, Profile, Cart on desktop */}
@@ -102,51 +98,21 @@ const Navbar = () => {
             className="hidden rounded-full p-1.5 text-neutral-800 transition hover:bg-neutral-100 lg:block"
             aria-label="Search"
           >
-            <svg
-              className="h-5 w-5"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-              />
-            </svg>
+            <i className="fas fa-search h-5 w-5" />
           </button>
           <button
             type="button"
             className="rounded-full p-1.5 text-neutral-800 transition hover:bg-neutral-100"
             aria-label="Account"
           >
-            <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
-              <path
-                fillRule="evenodd"
-                d="M12 2a5 5 0 105 5 5 5 0 00-5-5zm0 8a3 3 0 100-6 3 3 0 000 6zm-5 5a5 5 0 00-5 5 1 1 0 102 0 3 3 0 013-3h6a3 3 0 013 3 1 1 0 102 0 5 5 0 00-5-5H7z"
-                clipRule="evenodd"
-              />
-            </svg>
+            <i class="fas fa-user"></i>
           </button>
           <Link
             to="/cart"
             className="relative rounded-full p-1.5 text-neutral-800 transition hover:bg-neutral-100"
             aria-label="Cart"
           >
-            <svg
-              className="h-5 w-5"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"
-              />
-            </svg>
+            <i class="fas fa-shopping-cart"></i>
             <span className="absolute -right-0.5 -top-0.5 flex h-5 w-5 min-w-5 items-center justify-center rounded-full bg-orange-500 text-xs font-semibold text-black">
               {cartCount}
             </span>

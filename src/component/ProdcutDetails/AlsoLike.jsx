@@ -68,7 +68,7 @@ const AlsoLike = () => {
             <button
               type="button"
               onClick={() => scroll("left")}
-              className="w-11 h-11 rounded-lg bg-[#2E2E2E] text-gray-300 flex items-center justify-center hover:bg-[#1a1a1a] hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-[#2E2E2E] focus:ring-offset-2 focus:ring-offset-white"
+              className="w-11 h-11 rounded-lg bg-[#858582] text-gray-300 flex items-center justify-center hover:bg-[#1a1a1a] hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-[#2E2E2E] focus:ring-offset-2 focus:ring-offset-white"
               aria-label="Scroll left"
             >
               <svg
@@ -88,7 +88,7 @@ const AlsoLike = () => {
             <button
               type="button"
               onClick={() => scroll("right")}
-              className="w-11 h-11 rounded-lg bg-[#2E2E2E] text-gray-300 flex items-center justify-center hover:bg-[#1a1a1a] hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-[#2E2E2E] focus:ring-offset-2 focus:ring-offset-white"
+              className="w-11 h-11 rounded-lg bg-[#858582] text-gray-300 flex items-center justify-center hover:bg-[#1a1a1a] hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-[#2E2E2E] focus:ring-offset-2 focus:ring-offset-white"
               aria-label="Scroll right"
             >
               <svg
@@ -142,7 +142,7 @@ const AlsoLike = () => {
               <Link to="/Product-details">
                 <button
                   type="button"
-                  className="cursor-pointer mt-auto w-full bg-[#222222] text-white font-bold uppercase tracking-wide text-sm py-4 px-4 rounded-xl hover:bg-black transition-colors"
+                  className="cursor-pointer mt-auto w-full bg-[#222222] text-white uppercase tracking-wide text-sm py-4 px-4 rounded-xl hover:bg-black transition-colors"
                 >
                   <span>VIEW PRODUCT - </span>
                   <span className="text-[#FFC107]">${product.price}</span>

@@ -40,7 +40,7 @@ const NewProducts = () => {
     <section className="mt-4 mb-6">
       <div className="max-w-7xl mx-auto">
         {/* Header: title + CTA — horizontal on all screens (mobile = 2nd screenshot) */}
-        <div className="flex flex-row items-center justify-between gap-3 sm:gap-4 mb-4 sm:mb-8 px-4 py-4 sm:px-0 sm:py-0 rounded-lg sm:rounded-none">
+        <div className="flex flex-row items-end justify-between gap-3 sm:gap-4 mb-4 sm:mb-8 px-4 py-4 sm:px-0 sm:py-0 rounded-lg sm:rounded-none">
           <div className="min-w-0">
             <h2 className="text-[#2E2E2E] font-bold uppercase tracking-tight">
               <span className="text-xl sm:text-4xl lg:text-5xl block mt-0 sm:mt-1 leading-tight">
@@ -53,7 +53,7 @@ const NewProducts = () => {
           </div>
           <button
             type="button"
-            className="bg-[#4C7AF2] text-white font-semibold uppercase tracking-wide text-xs sm:text-sm px-4 py-2.5 sm:px-6 sm:py-3 rounded-full sm:rounded-lg hover:bg-[#3d6ae0] transition-colors shrink-0 whitespace-nowrap"
+            className="bg-[#4C7AF2] text-white font-semibold uppercase tracking-wide text-xs sm:text-sm px-4 py-2.5 sm:px-6 sm:py-3 rounded-lg sm:rounded-lg hover:bg-[#3d6ae0] transition-colors shrink-0 whitespace-nowrap"
           >
             SHOP NEW DROPS
           </button>
@@ -68,7 +68,7 @@ const NewProducts = () => {
             >
               {/* Image block: grey container + badge + image */}
               <div className="bg-white p-1 rounded-[30px] h-75">
-                <div className="relative rounded-[30px] bg-[#E6E6E6] h-full flex items-center justify-center p-4">
+                <div className="relative rounded-[30px] bg-[#eceef0] h-full flex items-center justify-center p-4">
                   <div className="absolute top-0 left-0 z-10 w-16 h-11 bg-linear-to-r from-blue-500 to-indigo-500 text-white flex items-center justify-center  rounded-tl-[30px] rounded-br-[30px]">
                     New
                   </div>
@@ -90,7 +90,7 @@ const NewProducts = () => {
                 {" "}
                 <button
                   type="button"
-                  className="cursor-pointer mt-auto w-full bg-[#222222] text-white font-bold uppercase tracking-wide text-sm py-4 px-4 rounded-xl hover:bg-black transition-colors"
+                  className="cursor-pointer mt-auto w-full bg-[#222222] text-white uppercase tracking-wide text-sm py-4 px-4 rounded-xl hover:bg-black transition-colors"
                 >
                   <span>VIEW PRODUCT - </span>
                   <span className="text-[#FFC107]">${product.price}</span>

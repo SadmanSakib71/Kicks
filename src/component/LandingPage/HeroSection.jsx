@@ -7,9 +7,9 @@ const HeroSection = () => {
     <section className="mb-8 sm:mb-12 px-1 sm:px-0">
       {/* Headline - compact on mobile only; original size/center on lg+ */}
       <div className="text-center">
-        <h1 className="font-bold tracking-tight text-[70px] sm:text-6xl md:text-8xl leading-tight lg:text-[220px] lg:leading-none">
+        <h1 className="font-bold tracking-tight text-[55px] sm:text-6xl md:text-8xl leading-tight lg:text-[215px] lg:leading-none">
           <span className="text-[#1a1a1a]">DO IT</span>
-          <span className="text-[#2563eb]">RIGHT</span>
+          <span className="text-[#2563eb]"> RIGHT</span>
         </h1>
       </div>
 
@@ -33,7 +33,7 @@ const HeroSection = () => {
 
             {/* Bottom left text + CTA - original spacing/sizes on lg+ */}
             <div className="absolute bottom-0 left-0 right-0 lg:right-auto lg:max-w-[45%] p-4 sm:p-6 lg:p-8 z-10">
-              <h2 className="text-xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold text-white uppercase tracking-tight mb-1 sm:mb-2">
+              <h2 className="text-xl sm:text-3xl lg:text-6xl xl:text-7xl font-bold text-white uppercase tracking-tight mb-1 sm:mb-2">
                 Nike Air Max
               </h2>
               <p className="text-white/95 text-xs sm:text-base lg:text-lg mb-3 sm:mb-5 max-w-md">

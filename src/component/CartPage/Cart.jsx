@@ -54,9 +54,9 @@ const Cart = () => {
   const maxQty = 10;
 
   return (
-    <div className="">
+    <div className="px-6">
       {/* Promo banner */}
-      <div className="pt-6 pb-2">
+      <div className="pt-6 pb-2 mb-4">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-[#2C2C2C] font-bold text-2xl sm:text-3xl mb-1">
             Saving to celebrate
@@ -83,7 +83,7 @@ const Cart = () => {
           {/* Left: Your Bag */}
           <div className="lg:col-span-2">
             <div className="bg-white rounded-xl p-6 sm:p-8">
-              <h1 className="text-[#2C2C2C] font-bold text-xl sm:text-2xl uppercase tracking-tight mb-1">
+              <h1 className="text-[#2C2C2C] font-bold text-xl sm:text-2xl tracking-tight mb-1">
                 Your Bag
               </h1>
               <p className="text-[#2C2C2C]/80 text-sm mb-6">
@@ -96,153 +96,159 @@ const Cart = () => {
               ) : (
                 <ul className="space-y-6">
                   {cartItems.map((item) => (
-                    <li
-                      key={item.id}
-                      className="flex gap-4 sm:gap-6 pb-6 border-b border-gray-100 last:border-0 last:pb-0"
-                    >
-                      <div className="shrink-0 w-24 h-24 sm:w-28 sm:h-28 rounded-lg bg-[#F5F5F5] overflow-hidden flex items-center justify-center">
-                        <img
-                          src={item.image}
-                          alt={item.name}
-                          className="w-full h-full object-cover"
-                        />
-                      </div>
-                      <div className="flex-1 min-w-0">
-                        <h3 className="text-[#2C2C2C] font-bold uppercase text-sm sm:text-base tracking-tight">
-                          {item.name}
-                        </h3>
-                        <p className="text-[#2C2C2C]/80 text-sm mt-0.5">
-                          {item.category}
-                        </p>
-                        <p className="text-[#2C2C2C]/80 text-sm">
-                          {item.color}
-                        </p>
-                        <p className="text-[#3A65FF] font-bold text-base sm:text-lg mt-2 text-right">
-                          ${(item.price * item.quantity).toFixed(2)}
-                        </p>
-
-                        <div className="flex flex-wrap items-center gap-3 mt-3">
-                          {/* Size dropdown */}
-                          <div className="relative">
-                            <button
-                              type="button"
-                              onClick={() =>
-                                setSizeOpen(
-                                  sizeOpen === item.id ? null : item.id,
-                                )
-                              }
-                              className="flex items-center gap-1 text-sm text-[#2C2C2C] border border-gray-300 rounded px-3 py-2 bg-white hover:border-gray-400"
-                            >
-                              Size {item.size}
-                              <svg
-                                className="w-4 h-4"
-                                fill="currentColor"
-                                viewBox="0 0 20 20"
-                              >
-                                <path
-                                  fillRule="evenodd"
-                                  d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                                  clipRule="evenodd"
-                                />
-                              </svg>
-                            </button>
-                            {sizeOpen === item.id && (
-                              <div className="absolute left-0 top-full mt-1 bg-white border border-gray-200 rounded-lg shadow-lg py-1 z-10 min-w-20">
-                                {sizes.map((s) => (
-                                  <button
-                                    key={s}
-                                    type="button"
-                                    onClick={() => updateSize(item.id, s)}
-                                    className="block w-full text-left px-4 py-2 text-sm hover:bg-gray-100"
-                                  >
-                                    {s}
-                                  </button>
-                                ))}
-                              </div>
-                            )}
-                          </div>
-                          {/* Quantity dropdown */}
-                          <div className="relative">
-                            <button
-                              type="button"
-                              onClick={() =>
-                                setQtyOpen(qtyOpen === item.id ? null : item.id)
-                              }
-                              className="flex items-center gap-1 text-sm text-[#2C2C2C] border border-gray-300 rounded px-3 py-2 bg-white hover:border-gray-400"
-                            >
-                              Quantity {item.quantity}
-                              <svg
-                                className="w-4 h-4"
-                                fill="currentColor"
-                                viewBox="0 0 20 20"
-                              >
-                                <path
-                                  fillRule="evenodd"
-                                  d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                                  clipRule="evenodd"
-                                />
-                              </svg>
-                            </button>
-                            {qtyOpen === item.id && (
-                              <div className="absolute left-0 top-full mt-1 bg-white border border-gray-200 rounded-lg shadow-lg py-1 z-10 min-w-25">
-                                {Array.from(
-                                  { length: maxQty },
-                                  (_, i) => i + 1,
-                                ).map((q) => (
-                                  <button
-                                    key={q}
-                                    type="button"
-                                    onClick={() => updateQuantity(item.id, q)}
-                                    className="block w-full text-left px-4 py-2 text-sm hover:bg-gray-100"
-                                  >
-                                    {q}
-                                  </button>
-                                ))}
-                              </div>
-                            )}
-                          </div>
+                    <li key={item.id}>
+                      <div className="flex gap-4 sm:gap-6 pb-6 border-b border-gray-100 last:border-0 last:pb-0">
+                        <div className="shrink-0 w-40 h-40 sm:w-36 sm:h-36 rounded-lg bg-white overflow-hidden flex items-center justify-center border border-gray-100">
+                          <img
+                            src={item.image}
+                            alt={item.name}
+                            className="w-full h-full object-cover"
+                          />
                         </div>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 min-w-0">
+                          <div>
+                            <h3 className="text-[#2C2C2C] font-bold uppercase text-sm sm:text-base tracking-tight">
+                              {item.name}
+                            </h3>
+                            <p className="text-[#2C2C2C]/80 text-sm mt-2">
+                              {item.category}
+                            </p>
+                            <p className="text-[#2C2C2C]/80 text-sm my-2">
+                              {item.color}
+                            </p>
+                            <div className="flex flex-wrap items-center gap-3 mt-3">
+                              {/* Size dropdown */}
+                              <div className="relative">
+                                <button
+                                  type="button"
+                                  onClick={() =>
+                                    setSizeOpen(
+                                      sizeOpen === item.id ? null : item.id,
+                                    )
+                                  }
+                                  className="flex items-center gap-1 text-sm text-[#2C2C2C] border border-gray-300 rounded px-3 py-2 bg-white hover:border-gray-400"
+                                >
+                                  Size {item.size}
+                                  <svg
+                                    className="w-4 h-4"
+                                    fill="currentColor"
+                                    viewBox="0 0 20 20"
+                                  >
+                                    <path
+                                      fillRule="evenodd"
+                                      d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                      clipRule="evenodd"
+                                    />
+                                  </svg>
+                                </button>
+                                {sizeOpen === item.id && (
+                                  <div className="absolute left-0 top-full mt-1 bg-white border border-gray-200 rounded-lg shadow-lg py-1 z-10 min-w-20">
+                                    {sizes.map((s) => (
+                                      <button
+                                        key={s}
+                                        type="button"
+                                        onClick={() => updateSize(item.id, s)}
+                                        className="block w-full text-left px-4 py-2 text-sm hover:bg-gray-100"
+                                      >
+                                        {s}
+                                      </button>
+                                    ))}
+                                  </div>
+                                )}
+                              </div>
 
-                        <div className="flex items-center gap-4 mt-3 text-gray-400">
-                          <button
-                            type="button"
-                            className="p-1 hover:text-[#2C2C2C]"
-                            aria-label="Add to wishlist"
-                          >
-                            <svg
-                              className="w-5 h-5"
-                              fill="none"
-                              stroke="currentColor"
-                              viewBox="0 0 24 24"
-                            >
-                              <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth={2}
-                                d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
-                              />
-                            </svg>
-                          </button>
-                          <button
-                            type="button"
-                            onClick={() => removeItem(item.id)}
-                            className="p-1 hover:text-[#2C2C2C]"
-                            aria-label="Remove item"
-                          >
-                            <svg
-                              className="w-5 h-5"
-                              fill="none"
-                              stroke="currentColor"
-                              viewBox="0 0 24 24"
-                            >
-                              <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth={2}
-                                d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
-                              />
-                            </svg>
-                          </button>
+                              {/* Quantity dropdown */}
+                              <div className="relative">
+                                <button
+                                  type="button"
+                                  onClick={() =>
+                                    setQtyOpen(
+                                      qtyOpen === item.id ? null : item.id,
+                                    )
+                                  }
+                                  className="flex items-center gap-1 text-sm text-[#2C2C2C] border border-gray-300 rounded px-3 py-2 bg-white hover:border-gray-400"
+                                >
+                                  Quantity {item.quantity}
+                                  <svg
+                                    className="w-4 h-4"
+                                    fill="currentColor"
+                                    viewBox="0 0 20 20"
+                                  >
+                                    <path
+                                      fillRule="evenodd"
+                                      d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                      clipRule="evenodd"
+                                    />
+                                  </svg>
+                                </button>
+                                {qtyOpen === item.id && (
+                                  <div className="absolute left-0 top-full mt-1 bg-white border border-gray-200 rounded-lg shadow-lg py-1 z-10 min-w-25">
+                                    {Array.from(
+                                      { length: maxQty },
+                                      (_, i) => i + 1,
+                                    ).map((q) => (
+                                      <button
+                                        key={q}
+                                        type="button"
+                                        onClick={() =>
+                                          updateQuantity(item.id, q)
+                                        }
+                                        className="block w-full text-left px-4 py-2 text-sm hover:bg-gray-100"
+                                      >
+                                        {q}
+                                      </button>
+                                    ))}
+                                  </div>
+                                )}
+                              </div>
+                            </div>
+                            <div className="flex items-center gap-4 mt-3 text-gray-400">
+                              <button
+                                type="button"
+                                className="p-1 hover:text-[#2C2C2C]"
+                                aria-label="Add to wishlist"
+                              >
+                                <svg
+                                  className="w-5 h-5"
+                                  fill="none"
+                                  stroke="currentColor"
+                                  viewBox="0 0 24 24"
+                                >
+                                  <path
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    strokeWidth={2}
+                                    d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+                                  />
+                                </svg>
+                              </button>
+                              <button
+                                type="button"
+                                onClick={() => removeItem(item.id)}
+                                className="p-1 hover:text-[#2C2C2C]"
+                                aria-label="Remove item"
+                              >
+                                <svg
+                                  className="w-5 h-5"
+                                  fill="none"
+                                  stroke="currentColor"
+                                  viewBox="0 0 24 24"
+                                >
+                                  <path
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    strokeWidth={2}
+                                    d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
+                                  />
+                                </svg>
+                              </button>
+                            </div>
+                          </div>
+                          <div>
+                            <p className="text-[#3A65FF] font-bold text-base sm:text-lg">
+                              ${(item.price * item.quantity).toFixed(2)}
+                            </p>
+                          </div>
                         </div>
                       </div>
                     </li>
@@ -280,7 +286,7 @@ const Cart = () => {
               </div>
               <button
                 type="button"
-                className="w-full mt-6 bg-[#2C2C2C] text-white font-bold uppercase text-sm tracking-wide py-3.5 px-6 rounded-lg hover:bg-[#1a1a1a] transition-colors"
+                className="w-full mt-6 bg-[#2C2C2C] text-white uppercase text-sm tracking-wide py-3.5 px-6 rounded-lg hover:bg-[#1a1a1a] transition-colors"
               >
                 Checkout
               </button>

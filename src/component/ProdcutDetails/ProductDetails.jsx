@@ -44,7 +44,7 @@ const ProductDetails = () => {
 
           {/* Right: product info */}
           <div className="lg:sticky lg:top-8">
-            <span className="inline-block px-3 py-1 rounded-full bg-[#4C7AF2] text-white text-xs font-semibold uppercase tracking-wide mb-3">
+            <span className="inline-block px-3 py-2 sm:py-3 rounded-full bg-[#4C7AF2] text-white text-xs font-semibold uppercase tracking-wide mb-3">
               {PRODUCT.badge}
             </span>
             <h1 className="text-[#2E2E2E] font-bold uppercase tracking-tight text-xl sm:text-2xl mb-2">
@@ -89,7 +89,7 @@ const ProductDetails = () => {
                 </p>
                 <button
                   type="button"
-                  className="text-[#2E2E2E] text-sm underline hover:no-underline focus:outline-none"
+                  className="text-[#2E2E2E] text-sm font-semibold underline hover:no-underline focus:outline-none"
                 >
                   Size chart
                 </button>
@@ -156,11 +156,11 @@ const ProductDetails = () => {
               <p className="text-gray-600 text-sm mb-1">
                 {PRODUCT.colors.map((c) => c.name).join(" / ")}
               </p>
-              <p className="text-gray-500 text-sm mb-3">
+              <p className="text-gray-500 text-sm my-6">
                 This product is excluded from all promotional discounts and
                 offers.
               </p>
-              <ul className="text-gray-500 text-sm space-y-1 list-disc list-inside">
+              <ul className="text-gray-500 text-sm space-y-1 list-disc list-inside pl-3">
                 <li>
                   Pay over time in interest-free installments with Affirm,
                   Klarna or Afterpay.

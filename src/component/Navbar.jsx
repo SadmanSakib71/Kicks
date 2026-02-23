@@ -30,12 +30,12 @@ const Navbar = () => {
           {/* Nav links - desktop only */}
           <ul className="hidden items-center gap-6 sm:gap-8 lg:flex">
             <li>
-              <a
-                href={"/all-new-items"}
+              <Link
+                to="/all-new-items"
                 className="flex items-center text-sm font-medium text-neutral-800 transition hover:text-neutral-600"
               >
                 New Drops<span className="ml-1">🔥</span>
-              </a>
+              </Link>
             </li>
             <li>
               <a
@@ -65,12 +65,12 @@ const Navbar = () => {
         </div>
 
         {/* Center: Logo / KICKS - always centered */}
-        <a
-          href="/"
+        <Link
+          to="/"
           className="absolute left-1/2 top-1/2 flex -translate-x-1/2 -translate-y-1/2 items-center lg:static lg:translate-x-0 lg:translate-y-0 lg:justify-self-center"
         >
           <img src={logo} alt="KICKS" className="h-5 w-auto sm:h-6" />
-        </a>
+        </Link>
 
         {/* Right: User + Cart badge on mobile; Search, Profile, Cart on desktop */}
         <div className="flex min-w-0 flex-1 items-center justify-end gap-3 sm:gap-4 lg:gap-5">
@@ -106,13 +106,13 @@ const Navbar = () => {
         <div className="mt-2 w-full rounded-2xl border border-neutral-200 bg-white px-4 py-3 shadow-lg lg:hidden">
           <ul className="flex flex-col gap-1">
             <li>
-              <a
-                href={"/all-new-items"}
+              <Link
+                to="/all-new-items"
                 className="flex items-center rounded-lg px-3 py-2 text-sm font-medium text-neutral-800 hover:bg-neutral-100"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 New Drops<span className="ml-1">🔥</span>
-              </a>
+              </Link>
             </li>
             <li>
               <a

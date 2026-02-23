@@ -30,7 +30,7 @@ const Cart = () => {
   const maxQty = 10;
 
   return (
-    <div className="px-6">
+    <div className="px-4">
       {/* Promo banner */}
       <div className="pt-6 pb-2 mb-4">
         <div className="max-w-7xl mx-auto">
@@ -58,7 +58,7 @@ const Cart = () => {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-10 items-start">
           {/* Left: Your Bag */}
           <div className="lg:col-span-2">
-            <div className="bg-white rounded-xl p-6 sm:p-8">
+            <div className="bg-white rounded-xl p-2 sm:p-8">
               <h1 className="text-[#2C2C2C] font-bold text-xl sm:text-2xl tracking-tight mb-1">
                 Your Bag
               </h1>
